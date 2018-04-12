@@ -37,21 +37,35 @@ class ProductController extends Controller
         $this->request = $request;
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $products = $this->productRepository->all();
         return response()->json($products, 200);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws ModelNotFoundException
+     */
     public function show($id)
     {
         $product = $this->productRepository->find($id);
+
         if (!$product) {
             throw new ModelNotFoundException();
         }
+
         return response()->json($product, 200);
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store()
     {
         $product = new Product();
@@ -61,24 +75,40 @@ class ProductController extends Controller
         return response()->json($product, 200);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws ModelNotFoundException
+     */
     public function update($id)
     {
         $product = $this->productRepository->find($id);
+
         if (!$product) {
             throw new ModelNotFoundException();
         }
+
         $product->name = $this->request->get('name');
         $product->amount = $this->request->get('amount');
         $this->productRepository->save($product);
         return response()->json($product, 200);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws ModelNotFoundException
+     */
     public function delete($id)
     {
         $product = $this->productRepository->find($id);
+
         if (!$product) {
             throw new ModelNotFoundException();
         }
+
         $this->productRepository->delete($product);
         return response()->json([], 200);
     }
