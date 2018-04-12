@@ -1,0 +1,12 @@
+{
+    "name": "sebastianlew/interview",
+    "description": "Task for a interview - laravel 5",
+    "authors": [
+        {
+            "name": "Sebastian Lewandowski",
+            "email": "sebasolew@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
