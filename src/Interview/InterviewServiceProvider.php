@@ -16,8 +16,10 @@ class InterviewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadViewsFrom(__DIR__.'/Web/Views', 'interview');
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
         $this->mapApiRoutes();
+        $this->mapWebRoutes();
     }
 
     /**
@@ -36,5 +38,12 @@ class InterviewServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace('Sebastianlew\Interview\Api\Controllers')
             ->group(__DIR__.'/Api/routes.php');
+    }
+
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace('Sebastianlew\Interview\Web\Controllers')
+            ->group(__DIR__.'/Web/routes.php');
     }
 }
