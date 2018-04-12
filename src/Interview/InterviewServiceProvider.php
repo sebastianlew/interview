@@ -2,6 +2,7 @@
 
 namespace SebastianLew\Interview;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Sebastianlew\Interview\Console\MigrationCommand;
 
@@ -14,7 +15,7 @@ class InterviewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->mapApiRoutes();
     }
 
     /**
@@ -29,6 +30,7 @@ class InterviewServiceProvider extends ServiceProvider
         });
 
         $this->commands(['command.migration']);
+
     }
 
     /**
@@ -39,5 +41,13 @@ class InterviewServiceProvider extends ServiceProvider
     public function provides()
     {
         return ['command.migration'];
+    }
+
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace('Sebastianlew\Interview\Api\Controllers')
+            ->group(__DIR__.'/Api/routes.php');
     }
 }
