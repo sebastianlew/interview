@@ -5,7 +5,6 @@ namespace SebastianLew\Interview;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Sebastianlew\Interview\Console\MigrationCommand;
 use Sebastianlew\Interview\Exceptions\Handler;
 
 class InterviewServiceProvider extends ServiceProvider
