@@ -17,6 +17,7 @@ class InterviewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadMigrationsFrom(__DIR__.'/../migrations');
         $this->mapApiRoutes();
     }
 
@@ -27,23 +28,7 @@ class InterviewServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('command.migration', function () {
-            return new MigrationCommand;
-        });
-
-        $this->commands(['command.migration']);
-
         $this->app->singleton(ExceptionHandler::class, Handler::class);
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return ['command.migration'];
     }
 
     protected function mapApiRoutes()
