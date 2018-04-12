@@ -1,5 +1,8 @@
 # interview
 
+### Requirements
+- Laravel 5.6
+
 ### Installation
 
 `php artisan interview:migration`
