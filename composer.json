@@ -7,8 +7,10 @@
             "email": "sebasolew@gmail.com"
         }
     ],
-    "require": {
-        "illuminate/console": "~5.1"
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "orchestra/testbench": "^3.6"
     },
     "autoload": {
         "classmap": [
@@ -16,6 +18,11 @@
         ],
         "psr-4": {
             "Sebastianlew\\Interview\\": "src/Interview"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sebastianlew\\Interview\\Test\\": "tests/"
         }
     },
     "extra": {
