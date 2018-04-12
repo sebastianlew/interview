@@ -7,6 +7,22 @@
             "email": "sebasolew@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "illuminate/console": "~5.1"
+    },
+    "autoload": {
+        "classmap": [
+            "src/seeds"
+        ],
+        "psr-4": {
+            "Sebastianlew\\Interview\\": "src/Interview"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sebastianlew\\Interview\\InterviewServiceProvider"
+            ]
+        }
+    }
 }
