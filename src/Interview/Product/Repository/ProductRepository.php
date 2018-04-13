@@ -15,4 +15,35 @@ class ProductRepository extends BaseRepository
     {
         parent::__construct($product);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getInStock()
+    {
+        return $this->model->newQuery()
+            ->where('amount', '>', 0)
+            ->get();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getOutOfStock()
+    {
+        return $this->model->newQuery()
+            ->where('amount', 0)
+            ->get();
+    }
+
+    /**
+     * @param int $amount
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByQtyMoreThan($amount)
+    {
+        return $this->model->newQuery()
+            ->where('amount', '>', $amount)
+            ->get();
+    }
 }

@@ -42,7 +42,20 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $inStock = !!$this->request->query('in_stock');
+        $outOfStock = !!$this->request->query('out_of_stock');
+        $amountGreaterThan = (int) $this->request->query('amount_greater_than');
+
         $products = $this->productRepository->all();
+
+        if ($inStock) {
+            $products = $this->productRepository->getInStock();
+        } else if ($outOfStock) {
+            $products = $this->productRepository->getOutOfStock();
+        } else if ($amountGreaterThan) {
+            $products = $this->productRepository->getByQtyMoreThan($amountGreaterThan);
+        }
+
         return response()->json($products, 200);
     }
 
