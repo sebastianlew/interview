@@ -43,6 +43,7 @@ class InterviewServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
+            ->name('interview::')
             ->namespace('Sebastianlew\Interview\Web\Controllers')
             ->group(__DIR__.'/Web/routes.php');
     }

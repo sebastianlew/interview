@@ -14,4 +14,14 @@ class ProductController extends Controller
     {
         return view('interview::products.index');
     }
+
+    public function create()
+    {
+        return view('interview::products.create');
+    }
+
+    public function edit($id)
+    {
+        return view('interview::products.edit', compact('id'));
+    }
 }
