@@ -61,14 +61,14 @@ class HttpTest extends TestCase
     public function it_correctly_creates_product()
     {
         $response = $this->json('POST', '/api/products', $this->data[0]);
-        $response->assertStatus(200)->assertJson($this->data[0]);
+        $response->assertStatus(201)->assertJson($this->data[0]);
     }
 
     /** @test */
     public function it_correctly_deletes_product()
     {
         $response = $this->json('DELETE', '/api/products/1');
-        $response->assertStatus(200);
+        $response->assertStatus(204);
 
         $foundProduct = \DB::table('products')->find(1);
         $this->assertNull($foundProduct);

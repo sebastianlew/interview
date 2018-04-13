@@ -72,7 +72,7 @@ class ProductController extends Controller
         $product->name = $this->request->get('name');
         $product->amount = $this->request->get('amount');
         $this->productRepository->save($product);
-        return response()->json($product, 200);
+        return response()->json($product, 201);
     }
 
     /**
@@ -110,6 +110,6 @@ class ProductController extends Controller
         }
 
         $this->productRepository->delete($product);
-        return response()->json([], 200);
+        return response()->json([], 204);
     }
 }
